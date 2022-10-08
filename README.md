@@ -1,1 +1,1 @@
-Next-Express-Ts
+Next-Express-Typescript-Mongoose
