@@ -24,9 +24,25 @@ export const getGames = createAsyncThunk<Game[]>(
   async (_, thunkApi) => {
     try {
       const res = await axios.get('http://localhost:8080/api/games');
+      thunkApi.dispatch(getGames());
       return res.data;
     } catch (error) {
       return thunkApi.rejectWithValue(error);
+    }
+  }
+);
+
+export const createGame = createAsyncThunk<Object, Game>(
+  'game/createGame',
+  async (data, thunkAPi) => {
+    try {
+      const res = await axios.post(
+        'http://localhost:8080/api/games/game',
+        data
+      );
+      return res.data;
+    } catch (error) {
+      thunkAPi.rejectWithValue(error);
     }
   }
 );
@@ -57,3 +73,6 @@ export const gameSice = createSlice({
     });
   },
 });
+
+export default gameSice.reducer;
+export const { setGames } = gameSice.actions;

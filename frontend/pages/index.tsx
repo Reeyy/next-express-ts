@@ -1,8 +1,19 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
+import { useCallback, useEffect } from 'react';
+import NavBar from '../components/navbar';
+import { getGames } from '../features/games/gameSlice';
 import GamesPage from '../features/games/GamesPage';
+import { useAppDispatch } from '../store/store';
 
 const Home: NextPage = () => {
+  const dispatch = useAppDispatch();
+  const initGetApiGame = useCallback(async () => {
+    await dispatch(getGames());
+  }, [dispatch]);
+  useEffect(() => {
+    initGetApiGame();
+  }, [initGetApiGame]);
   return (
     <div>
       <Head>
@@ -12,6 +23,7 @@ const Home: NextPage = () => {
       </Head>
 
       <main>
+        <NavBar />
         <GamesPage />
       </main>
     </div>
