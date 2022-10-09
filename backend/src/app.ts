@@ -3,14 +3,14 @@ import cors from 'cors';
 import 'dotenv/config';
 
 const app: Application = express();
-
 app.use(express.json());
 
 // import routes;
+import gameRoutes from './routes/gameRoutes';
 
 // declaare routes;
 app.get('/', (req: Request, res: Response) => {
   res.send({ message: 'test' });
 });
-
+app.use('/api/games', gameRoutes);
 export { app };
