@@ -1,5 +1,6 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
+import GamesPage from '../features/games/GamesPage';
 
 const Home: NextPage = () => {
   return (
@@ -10,7 +11,9 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>sss</main>
+      <main>
+        <GamesPage />
+      </main>
     </div>
   );
 };
